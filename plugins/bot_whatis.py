@@ -11,26 +11,26 @@ from botoy.decorators import ignore_botself, startswith, these_msgtypes
 def whatis(text):
     try:
         resp = requests.post(
-            'https://lab.magiconch.com/api/nbnhhsh/guess',
-            data={'text': text},
+            "https://lab.magiconch.com/api/nbnhhsh/guess",
+            data={"text": text},
             timeout=10,
         )
         resp.raise_for_status()
         data = resp.json()
     except Exception as e:
         print(e)
-        return ''
+        return ""
     else:
         if not data:
-            return ''
-        name, trans = data[0]['name'], data[0]['trans']
-        trans_str = '、'.join(trans)
-        return f'【{name}】{trans_str}'
+            return ""
+        name, trans = data[0]["name"], data[0]["trans"]
+        trans_str = "、".join(trans)
+        return f"【{name}】{trans_str}"
 
 
 @ignore_botself
 @these_msgtypes(MsgTypes.TextMsg)
-@startswith('?')
+@startswith("?")
 def receive_group_msg(ctx: GroupMsg):
     ans = whatis(ctx.Content[1:])
     if ans:

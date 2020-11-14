@@ -1,9 +1,9 @@
 from collections import defaultdict
 from queue import deque
 
-from botoy.collection import MsgTypes
 from botoy import GroupMsg
 from botoy import decorators as deco
+from botoy.collection import MsgTypes
 from botoy.sugar import Text
 
 # 自动消息加一功能

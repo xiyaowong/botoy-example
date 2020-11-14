@@ -7,12 +7,12 @@ from botoy.sugar import Text
 
 @ignore_botself
 @these_msgtypes(MsgTypes.TextMsg, MsgTypes.PicMsg)
-@in_content('复读机')
+@in_content("复读机")
 def receive_group_msg(ctx: GroupMsg):
     if ctx.MsgType == MsgTypes.TextMsg:
-        if ctx.Content.startswith('复读机'):
+        if ctx.Content.startswith("复读机"):
             text = ctx.Content[3:]
-            while text.startswith('复读机'):
+            while text.startswith("复读机"):
                 text = text[3:]
             if text:
                 Text(text)
