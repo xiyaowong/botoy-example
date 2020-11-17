@@ -7,6 +7,7 @@ import time
 from datetime import datetime
 
 from botoy import Action, GroupMsg
+from botoy.collection import Emoticons
 from botoy.decorators import equal_content, ignore_botself, queued_up
 
 
@@ -38,7 +39,7 @@ def receive_group_msg(ctx: GroupMsg):
         cache["likedUser"].append(ctx.FromUserId)
         action.replyGroupMsg(
             ctx.FromGroupId,
-            "正在赞。。。",
+            "正在赞。。。" + Emoticons.可爱,
             ctx.MsgSeq,
             ctx.MsgRandom,
             ctx.FromUserId,
@@ -51,7 +52,7 @@ def receive_group_msg(ctx: GroupMsg):
         #######
         action.replyGroupMsg(
             ctx.FromGroupId,
-            "赞完了。。。",
+            "赞完了。。。" + Emoticons.害羞,
             ctx.MsgSeq,
             ctx.MsgRandom,
             ctx.FromUserId,
@@ -62,7 +63,7 @@ def receive_group_msg(ctx: GroupMsg):
         # 今天已赞
         action.replyGroupMsg(
             ctx.FromGroupId,
-            "今日已赞。。。",
+            "今日已赞。。。" + Emoticons.发怒,
             ctx.MsgSeq,
             ctx.MsgRandom,
             ctx.FromUserId,
